@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Docker Build') {
       steps {
-        sh "docker build -t tapan2609/sbmvnpodinfo:${env.BUILD_NUMBER} ."
+        sh "docker build -t kunal514/spring-example"
       }
     }
     stage('Docker Push') {
