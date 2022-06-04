@@ -1,5 +1,5 @@
 # Build the application first using Maven
-FROM maven:3.8-openjdk-11 as build
+FROM java:alpine
 WORKDIR /app
 COPY . .
 RUN mvn install
