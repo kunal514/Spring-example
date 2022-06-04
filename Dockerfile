@@ -1,11 +1,8 @@
-# Build stage
-FROM maven:3.6.3-jdk-8-slim AS build
-WORKDIR /home/app
-COPY Spring-example/src /home/app/src
-COPY Spring-example/pom.xml /home/app
-RUN mvn -f /home/app/pom.xml clean test package
-# Package stage
-FROM openjdk:8-jdk-alpine
-COPY --from=build /home/app/target/*.jar app.jar
-EXPOSE 8090
-ENTRYPOINT ["java","-jar","app.jar"]
+FROM adoptopenjdk/openjdk11:alpine-jre
+
+ARG APP_NAME="Spring-example"
+ARG APP_VERSION="0.0.1"
+ARG JAR_FILE="/target/spring-example-0.0.1-SNAPSHOT-jar-with-dependencies.jar"
+
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar", "app.jar"]
