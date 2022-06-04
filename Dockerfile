@@ -1,4 +1,10 @@
-FROM openjdk:8-jre-alpine
-WORKDIR /tmp
-COPY target/demo-0.0.1-SNAPSHOT-jar-with-dependencies.jar app.jar
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Build stage
+FROM maven:3.6.3-jdk-8-slim AS build
+COPY spring-example/src /home/app/src
+COPY spring-example/pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean test package
+# Package stage
+FROM openjdk:8-jdk-alpine
+COPY --from=build /home/app/target/*.jar app.jar
+EXPOSE 8090
+ENTRYPOINT ["java","-jar","app.jar"]
