@@ -1,8 +1,8 @@
 # Build stage
 FROM maven:3.6.3-jdk-8-slim AS build
 WORKDIR /home/app
-COPY demo/src /home/app/src
-COPY demo/pom.xml /home/app
+COPY Spring-example/src /home/app/src
+COPY Spring-example/pom.xml /home/app
 RUN mvn -f /home/app/pom.xml clean test package
 # Package stage
 FROM openjdk:8-jdk-alpine
