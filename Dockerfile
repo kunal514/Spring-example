@@ -1,12 +1,5 @@
-FROM openjdk:8-jdk-alpine
-WORKDIR /app
-COPY . .
-RUN mvn install
-
-# Inject the JAR file into a new container to keep the file small
-FROM openjdk:8-jre-alpine
-WORKDIR /app
-COPY --from=build /app/target/spring-example-0.0.1-SNAPSHOT-jar-with-dependencies.jar /app/app.jar
+FROM adoptopenjdk/openjdk11:alpine-jre
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} application.jar
 EXPOSE 8090
-ENTRYPOINT ["sh", "-c"]
-CMD ["java -jar app.jar"]
+ENTRYPOINT ["java","-jar","/application.jar"]
