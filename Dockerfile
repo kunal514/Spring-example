@@ -1,5 +1,5 @@
 # Build stage
-FROM openjdk:8-jdk-alpine
+FROM openjdk:8-jdk-alpine as build
 WORKDIR /home/app
 COPY    Spring-example/src /home/app/src
 COPY Spring-example/pom.xml /home/app
