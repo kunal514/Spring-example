@@ -5,7 +5,7 @@ pipeline {
   stages {
     stage('Docker Build') {
       steps {
-        sh "docker build -t kunal514/spring-example"
+        sh "docker build -t kunal514/spring-example ."
       }
     }
     stage('Docker Push') {
