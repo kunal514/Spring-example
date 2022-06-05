@@ -31,8 +31,8 @@ tools {
           sh 'kubectl apply -f service.yaml'
         }
       }
-  }
-} */
+  }*/
+}
 post {
     success {
       slackSend(message: "sbmvn Pipeline is successfully completed.")
