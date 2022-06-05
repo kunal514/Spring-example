@@ -34,11 +34,11 @@ tools {
   }*/
 }
 post {
-    success {
+    /* success {
       slackSend(message: "sbmvn Pipeline is successfully completed.")
     }
     failure {
       slackSend(message: "sbmvn Pipeline failed. Please check the logs.")
-    }
+    } */
 }
 }
