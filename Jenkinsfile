@@ -1,9 +1,9 @@
 pipeline {
-
+ agent { label 'main' }
  tools {
-        maven 'Maven 3.8.5'
+        maven '3.8.5'
     }
-  agent any
+
   stages {
     stage('Docker Build') {
       steps {
