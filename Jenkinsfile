@@ -1,8 +1,5 @@
 pipeline {
  agent { label 'main' }
- tools {
-        Maven
-    }
 
   stages {
     stage('Docker Build') {
