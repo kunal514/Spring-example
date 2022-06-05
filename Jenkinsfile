@@ -8,7 +8,7 @@ tools {
   stages {
     stage('Docker Build') {
       steps {
-        sh "docker build -t kunal514/spring-example ."
+        sh "docker build -t kunal514/spring-example:${env.BUILD_NUMBER}"
       }
     }
     stage('Docker Push') {
@@ -19,11 +19,11 @@ tools {
         }
       }
     }
-    stage('Docker Remove Image') {
+/*     stage('Docker Remove Image') {
       steps {
         sh "docker rmi kunal514/spring-example"
       }
-    }
+    } */
     stage('Apply Kubernetes Files') {
       steps {
           withKubeConfig([credentialsId: 'kubeconfig']) {
