@@ -1,13 +1,9 @@
 pipeline {
- agent { label 'main' }
- tools {
-        maven '3.8.5'
-    }
-
+  agent any
   stages {
     stage('Docker Build') {
       steps {
-        sh "docker build -t kunal514/spring-example ."
+        sh "docker build -t kunal514/spring-example"
       }
     }
     stage('Docker Push') {
