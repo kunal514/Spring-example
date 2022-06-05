@@ -3,7 +3,7 @@ pipeline {
   agent any
 tools {
     maven 'Maven'
-    jdk 'JDK1.8'
+    jdk 'jdk1.8'
 }
   stages {
     stage('Docker Build') {
@@ -13,8 +13,8 @@ tools {
     }
     stage('Docker Push') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'https://hub.docker.com/', passwordVariable: 'Kunal@1234', usernameVariable: 'kunal514')]) {
-          sh "docker login -u kunal514 -p Kunal@1234"
+        withCredentials([usernamePassword(credentialsId: '77bae009-0a0e-43ea-9c2e-293306a3e131', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
           sh "docker push kunal514/spring-example"
         }
       }
