@@ -3,7 +3,7 @@ FROM openjdk:8-jdk-alpine as build
 WORKDIR /home/app
 COPY src /home/app/src
 COPY pom.xml /home/app
-RUN mvn /home/app/pom.xml clean package
+RUN mvn -f /home/app/pom.xml clean package
 # Package stage
 FROM openjdk:8-jdk-alpine
 COPY --from=build /home/app/target/*.jar app.jar
