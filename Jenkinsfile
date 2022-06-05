@@ -3,7 +3,7 @@ pipeline {
   agent any
 tools {
     maven 'Maven'
-    jdk 'jdk1.8'
+    jdk 'JDK1.8'
 }
   stages {
     stage('Docker Build') {
