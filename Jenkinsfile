@@ -15,7 +15,7 @@ tools {
       steps {
         withCredentials([usernamePassword(credentialsId: '77bae009-0a0e-43ea-9c2e-293306a3e131', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
           sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-          sh "docker push kunal514/spring-example"
+          sh "docker push kunal514/spring-example:${env.BUILD_NUMBER}"
         }
       }
     }
@@ -24,7 +24,7 @@ tools {
         sh "docker rmi kunal514/spring-example"
       }
     } */
-    stage('Apply Kubernetes Files') {
+  /*   stage('Apply Kubernetes Files') {
       steps {
           withKubeConfig([credentialsId: 'kubeconfig']) {
           sh 'cat deployment.yaml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" | kubectl apply -f -'
@@ -32,7 +32,7 @@ tools {
         }
       }
   }
-}
+} */
 post {
     success {
       slackSend(message: "sbmvn Pipeline is successfully completed.")
