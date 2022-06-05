@@ -13,15 +13,15 @@ tools {
     }
     stage('Docker Push') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'docker098765', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-          sh "docker push tapan2609/sbmvnpodinfo:${env.BUILD_NUMBER}"
+        withCredentials([usernamePassword(credentialsId: 'https://hub.docker.com/', passwordVariable: 'Kunal@1234', usernameVariable: 'kunal514')]) {
+          sh "docker login -u kunal514 -p Kunal@1234"
+          sh "docker push kunal514/spring-example"
         }
       }
     }
     stage('Docker Remove Image') {
       steps {
-        sh "docker rmi tapan2609/sbmvnpodinfo:${env.BUILD_NUMBER}"
+        sh "docker rmi kunal514/spring-example"
       }
     }
     stage('Apply Kubernetes Files') {
