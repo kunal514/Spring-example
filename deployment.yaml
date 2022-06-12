@@ -15,7 +15,7 @@ spec:
         app: app
     spec:
       containers:
-        - name: sbmvnpodinfo
+        - name: app
           image: kunal514/spring-example:{{BUILD_NUMBER}}
           imagePullPolicy: Always
           ports:

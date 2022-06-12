@@ -34,7 +34,7 @@ tools {
     } */
      stage('Apply Kubernetes Files') {
       steps {
-        withKubeConfig(credentialsId: KUBERNETES_CREDENTIALS_ID, namespace: AKS_NAMESPACE, clusterName: AKS_CLUSTER_NAME, serverUrl: AKS_CLUSTER_API_URL)
+        withKubeConfig(credentialsId:'e39f54e2-d36f-48bb-aa88-91e3d6a8868b', namespace: 'learnaks', clusterName: 'kunal_cluster', serverUrl: 'https://kunalcluster-dns-043d1cf3.hcp.eastasia.azmk8s.io')
          {
           sh 'cat deployment.yaml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" | kubectl apply -f -'
           sh 'kubectl apply -f service.yaml'
