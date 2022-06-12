@@ -10,7 +10,7 @@ tools {
         AKS_CLUSTER_NAME = 'kunal_cluster'
         AKS_NAMESPACE = 'learnaks'
         KUBERNETES_CREDENTIALS_ID = 'e39f54e2-d36f-48bb-aa88-91e3d6a8868b'
-        AKS_CLUSTER_API_URL = 'https://kunalcluster-dns-043d1cf3.hcp.eastasia.azmk8s.io:443'
+        AKS_CLUSTER_API_URL = 'https://kunalcluster-dns-043d1cf3.hcp.eastasia.azmk8s.io'
         VERSION = ''
     }
   stages {
