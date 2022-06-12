@@ -1,43 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sbmvnpodinfo-deployment
+  name: spring-example-deployment
   labels:
-    app: sbmvnpodinfo
+    app: app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sbmvnpodinfo
+      app: app
   template:
     metadata:
       labels:
-        app: sbmvnpodinfo
+        app: app
     spec:
       containers:
         - name: sbmvnpodinfo
-          image: tapan2609/sbmvnpodinfo:{{BUILD_NUMBER}}
+          image: kunal514/spring-example:{{BUILD_NUMBER}}
           imagePullPolicy: Always
           ports:
             - containerPort: 8090
-          env:
-            - name: MY_NODE_NAME
-              valueFrom:
-                fieldRef:
-                  fieldPath: spec.nodeName
-            - name: MY_POD_NAME
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.name
-            - name: MY_POD_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
-            - name: MY_POD_IP
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.podIP
-            - name: MY_POD_SERVICE_ACCOUNT
-              valueFrom:
-                fieldRef:
-                  fieldPath: spec.serviceAccountName
